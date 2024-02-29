@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 
 import { createConnection } from "./database/connection.js";
 import { AuthRoute } from "./routes/auth.js";
+import { UserRoute } from "./routes/user.js";
 import { TestRoute } from "./routes/test.js";
 
 export class Server {
@@ -47,6 +48,7 @@ export class Server {
 
   routes() {
     this.app.use("/api/auth", AuthRoute);
+    this.app.use("/api/user", UserRoute);
     this.app.use("/api/test", TestRoute);
   }
 
