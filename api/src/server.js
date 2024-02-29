@@ -1,10 +1,10 @@
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
-const { TestRoute } = require("./routes");
+import { TestRoute } from "./routes/test.js";
 
-class Server {
+export class Server {
   app;
   port;
 
@@ -48,7 +48,3 @@ class Server {
     });
   }
 }
-
-module.exports = {
-  Server,
-};

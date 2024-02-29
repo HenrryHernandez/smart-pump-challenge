@@ -1,8 +1,8 @@
-const { config } = require("dotenv");
+import { config } from "dotenv";
 
 config();
 
-const { Server } = require("./src/server");
+import { Server } from "./src/server.js";
 
 const server = new Server();
 
