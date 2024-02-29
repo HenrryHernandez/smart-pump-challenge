@@ -4,14 +4,14 @@ import { fileURLToPath } from "url";
 import { LowSync } from "lowdb";
 import { JSONFileSync } from "lowdb/node";
 
-import JsonDB from "./../database/test.json" assert { type: "json" };
+import JsonDB from "./../database/users.json" assert { type: "json" };
 
 let db;
 
 export function createConnection() {
   const __dirname = dirname(fileURLToPath(import.meta.url));
 
-  const file = join(__dirname, "../database/test.json");
+  const file = join(__dirname, "../database/users.json");
   db = new LowSync(new JSONFileSync(file), {});
 
   db.data = { ...JsonDB };
