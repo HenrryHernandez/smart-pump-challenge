@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import { TestRoute } from "./routes/test.js";
+import { createConnection } from "./database/connection.js";
 
 export class Server {
   app;
@@ -12,8 +13,13 @@ export class Server {
     this.app = express();
     this.port = process.env.PORT;
 
+    this.createDBConnection();
     this.middlewares();
     this.routes();
+  }
+
+  createDBConnection() {
+    createConnection();
   }
 
   middlewares() {
