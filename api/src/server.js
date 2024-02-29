@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import { TestRoute } from "./routes/test.js";
 import { createConnection } from "./database/connection.js";
+import { AuthRoute } from "./routes/auth.js";
+import { TestRoute } from "./routes/test.js";
 
 export class Server {
   app;
@@ -45,6 +46,7 @@ export class Server {
   }
 
   routes() {
+    this.app.use("/api/auth", AuthRoute);
     this.app.use("/api/test", TestRoute);
   }
 
