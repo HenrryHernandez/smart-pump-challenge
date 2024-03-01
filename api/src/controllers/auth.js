@@ -1,6 +1,7 @@
 import { response } from "express";
 
 import { getConnection } from "../database/connection.js";
+import { generateToken } from "../helpers/generate-jwt.js";
 
 export const login = async (req, res = response) => {
   const { email, password } = req.body;
@@ -8,7 +9,7 @@ export const login = async (req, res = response) => {
   if (!email || !password) {
     return res
       .status(400)
-      .json({ msg: "Missing password or email", data: null, success: false });
+      .json({ msg: "Missing password or email.", data: null, success: false });
   }
 
   const db = getConnection();
@@ -18,7 +19,13 @@ export const login = async (req, res = response) => {
   if (!user) {
     return res
       .status(404)
-      .json({ msg: "User does not exist", data: null, success: false });
+      .json({ msg: "User does not exist.", data: null, success: false });
+  }
+
+  if (user.password !== password) {
+    return res
+      .status(404)
+      .json({ msg: "Incorrect password.", data: null, success: false });
   }
 
   res.status(200).json({ msg: "", data: user, success: true });
