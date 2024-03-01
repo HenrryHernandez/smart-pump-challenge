@@ -15,8 +15,8 @@ export const userInformation = async (req = request, res = response) => {
 };
 
 export const updateUserInformation = async (req = request, res = response) => {
-  const { id } = req.params;
   const body = req.body;
+  const { id } = body;
 
   // here we are removing the data the user (in my opinion) should not be
   // able to change and leaving the data allowed to change in "...data"
@@ -25,12 +25,6 @@ export const updateUserInformation = async (req = request, res = response) => {
   const db = getConnection();
 
   const user = db.data.users.find((user) => user._id === id);
-
-  if (!user) {
-    return res
-      .status(404)
-      .json({ msg: "User not found", data: null, success: false });
-  }
 
   const modifiedUser = { ...user, ...data };
 
