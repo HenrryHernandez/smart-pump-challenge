@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { Toaster } from "sonner";
+
 import { Navbar } from "@/components/Navbar";
 
 import "./globals.css";
@@ -19,9 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body suppressHydrationWarning={true} className={inter.className}>
         <Navbar />
         {children}
+
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
