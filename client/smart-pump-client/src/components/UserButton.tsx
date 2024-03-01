@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 
-import { FaHotel, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { CiSettings } from "react-icons/ci";
 
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -27,9 +28,9 @@ export const UserButton = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-40" align="end">
-        <DropdownMenuItem className="cursor-pointer p-2">
-          <Link href="/settings" className="w-full h-full flex">
-            <FaHotel className="h-4 w-4 mr-2" /> Settings
+        <DropdownMenuItem className="cursor-pointer">
+          <Link href="/settings" className="w-full h-full flex items-center">
+            <CiSettings className="h-4 w-4 mr-2" /> Settings
           </Link>
         </DropdownMenuItem>
 

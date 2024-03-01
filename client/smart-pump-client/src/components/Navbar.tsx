@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { CiLogin } from "react-icons/ci";
+import { CiLogin, CiSettings } from "react-icons/ci";
 import { RiMenuLine } from "react-icons/ri";
-import { FaHotel } from "react-icons/fa";
 
 import {
   DropdownMenu,
@@ -14,19 +13,25 @@ import {
 import { Separator } from "./ui/separator";
 import { LogoutButton } from "./LogoutButton";
 import { UserButton } from "./UserButton";
+import { LoggedInValidatorWrapper } from "./LoggedInValidatorWrapper";
 
 const NavItemsDesktop = () => {
   return (
     <div className="hidden sm:flex gap-4 text-lg text-white font-medium">
       <ul className="flex gap-4">
-        <li className="flex center">
-          <Link href="/login" className="hover:underline">
-            Login
-          </Link>
-        </li>
-        <li>
-          <UserButton />
-        </li>
+        <LoggedInValidatorWrapper forLoggedIn={false}>
+          <li className="flex center">
+            <Link href="/login" className="hover:underline">
+              Login
+            </Link>
+          </li>
+        </LoggedInValidatorWrapper>
+
+        <LoggedInValidatorWrapper>
+          <li>
+            <UserButton />
+          </li>
+        </LoggedInValidatorWrapper>
       </ul>
     </div>
   );
@@ -40,22 +45,29 @@ const NavItemsMobile = () => {
           <RiMenuLine className="text-white" />
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="w-44 p-2" align="end">
-          <DropdownMenuItem className="cursor-pointer p-2">
-            <Link href="/settings" className="w-full h-full flex">
-              <FaHotel className="h-4 w-4 mr-2" /> Settings
-            </Link>
-          </DropdownMenuItem>
+        <DropdownMenuContent className="w-44" align="end">
+          <LoggedInValidatorWrapper>
+            <DropdownMenuItem className="cursor-pointer p-2">
+              <Link
+                href="/settings"
+                className="w-full h-full flex items-center"
+              >
+                <CiSettings className="h-4 w-4 mr-2" /> Settings
+              </Link>
+            </DropdownMenuItem>
 
-          <Separator className="my-2" />
+            <Separator />
 
-          <LogoutButton />
+            <LogoutButton />
+          </LoggedInValidatorWrapper>
 
-          <DropdownMenuItem className="cursor-pointer">
-            <Link href="/login" className="w-full h-full flex">
-              <CiLogin className="h-4 w-4 mr-2" /> Login
-            </Link>
-          </DropdownMenuItem>
+          <LoggedInValidatorWrapper forLoggedIn={false}>
+            <DropdownMenuItem className="cursor-pointer">
+              <Link href="/login" className="w-full h-full flex">
+                <CiLogin className="h-4 w-4 mr-2" /> Login
+              </Link>
+            </DropdownMenuItem>
+          </LoggedInValidatorWrapper>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
