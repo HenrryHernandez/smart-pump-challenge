@@ -28,7 +28,7 @@ export const login = async (req, res = response) => {
       .json({ msg: "Incorrect password.", data: null, success: false });
   }
 
-  const token = generateToken();
+  const token = generateToken(user._id);
 
   res.cookie("token", token, {
     httpOnly: true,
