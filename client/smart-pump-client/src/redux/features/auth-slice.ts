@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit/dist/createAction";
 import { z } from "zod";
-
 import { UpdateUserInformationSchema } from "@/schemas";
 
 interface CurrentState {
@@ -21,12 +20,18 @@ export const auth = createSlice({
     setAuth: (_, action: PayloadAction<CurrentState>) => {
       return action.payload;
     },
+    modifyUserInformation: (
+      state,
+      action: PayloadAction<z.infer<typeof UpdateUserInformationSchema>>
+    ) => {
+      return { ...state, user: action.payload };
+    },
     resetAuth: () => {
       return initialState;
     },
   },
 });
 
-export const { resetAuth, setAuth } = auth.actions;
+export const { setAuth, modifyUserInformation, resetAuth } = auth.actions;
 
 export default auth.reducer;

@@ -21,11 +21,8 @@ export const UpdateUserInformationSchema = z
   })
   .refine(
     (data) => {
-      console.log(data);
       if (data.password && data.password.trim().length > 0) {
-        console.log(1);
         if (!data.confirmPassword || data.confirmPassword !== data.password) {
-          console.log(2);
           return false;
         }
       }
