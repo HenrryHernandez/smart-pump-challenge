@@ -16,7 +16,7 @@ export const login = async (req, res = response) => {
 
   const user = db.data.users.find((user) => user.email === email);
 
-  if (!user) {
+  if (!user || !user.isActive) {
     return res
       .status(404)
       .json({ msg: "User does not exist.", data: null, success: false });
