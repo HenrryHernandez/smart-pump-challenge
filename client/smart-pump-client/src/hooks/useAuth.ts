@@ -1,9 +1,11 @@
 import { useState } from "react";
 
 import { AxiosError } from "axios";
+import { z } from "zod";
 
 import { clientApi } from "@/axios/clientApi";
-import { LoginData, StandardResponse, User } from "@/interfaces";
+import { LoginData, StandardResponse } from "@/interfaces";
+import { UpdateUserInformationSchema } from "@/schemas";
 
 export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,10 +14,9 @@ export const useAuth = () => {
     setIsLoading(true);
 
     try {
-      const { data } = await clientApi.post<StandardResponse<{ user: User }>>(
-        "/auth/login",
-        loginData
-      );
+      const { data } = await clientApi.post<
+        StandardResponse<{ user: z.infer<typeof UpdateUserInformationSchema> }>
+      >("/auth/login", loginData);
 
       if (!data.data?.user) {
         return {

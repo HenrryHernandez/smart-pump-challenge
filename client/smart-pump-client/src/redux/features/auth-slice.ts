@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit/dist/createAction";
+import { z } from "zod";
 
-import { User } from "@/interfaces";
+import { UpdateUserInformationSchema } from "@/schemas";
 
 interface CurrentState {
   isAuthorized: boolean;
-  user: User | null;
+  user: z.infer<typeof UpdateUserInformationSchema> | null;
 }
 
 const initialState: CurrentState = {
