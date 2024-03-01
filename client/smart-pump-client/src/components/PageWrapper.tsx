@@ -11,7 +11,7 @@ export const PageWrapper = ({ children, className }: Props) => {
   return (
     <div
       className={cn(
-        "min-h-[calc(100vh-80px)] w-full h-full flex flex-col p-4",
+        "min-h-[calc(100vh-80px)] w-full h-full flex flex-col p-4 bg-blue-50",
         className
       )}
     >
