@@ -28,5 +28,17 @@ export const login = async (req, res = response) => {
       .json({ msg: "Incorrect password.", data: null, success: false });
   }
 
-  res.status(200).json({ msg: "", data: user, success: true });
+  const token = generateToken();
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 30 * 24 * 60 * 60 * 1000, // one month in milliseconds
+  });
+
+  // remove data we don't want to send, the data we want is in "userData"
+  const { guid, isActive, balance, password: pswd, ...userData } = user;
+
+  res.status(200).json({ msg: "", data: { user: userData }, success: true });
 };

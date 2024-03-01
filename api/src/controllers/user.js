@@ -24,7 +24,7 @@ export const updateUserInformation = async (req = request, res = response) => {
 
   // here we are removing the data the user (in my opinion) should not be
   // able to change and leaving the data allowed to change in "...data"
-  const { _id, guid, isActive, email, ...data } = body;
+  const { _id, guid, isActive, email, balance, ...data } = body;
 
   const db = getConnection();
 
