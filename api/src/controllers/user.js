@@ -3,19 +3,15 @@ import { request, response } from "express";
 import { getConnection } from "../database/connection.js";
 
 export const userInformation = async (req = request, res = response) => {
-  const { id } = req.params;
+  const { id } = req.body;
 
   const db = getConnection();
 
   const user = db.data.users.find((user) => user._id === id);
 
-  if (!user) {
-    return res
-      .status(404)
-      .json({ msg: "User not found", data: null, success: false });
-  }
+  const { guid, isActive, balance, password: pswd, ...userData } = user;
 
-  res.status(200).json({ msg: "", data: user, success: true });
+  res.status(200).json({ msg: "", data: { user: userData }, success: true });
 };
 
 export const updateUserInformation = async (req = request, res = response) => {
