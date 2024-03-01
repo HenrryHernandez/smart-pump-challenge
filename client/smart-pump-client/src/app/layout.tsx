@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import { Toaster } from "sonner";
 
+import { Initializer } from "@/components/Initializer";
 import { Navbar } from "@/components/Navbar";
 import { ReduxProvider } from "@/redux";
 
@@ -24,10 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
         <ReduxProvider>
-          <Navbar />
-          {children}
+          <Initializer>
+            <Navbar />
+            {children}
 
-          <Toaster position="top-center" richColors />
+            <Toaster position="top-center" richColors />
+          </Initializer>
         </ReduxProvider>
       </body>
     </html>
