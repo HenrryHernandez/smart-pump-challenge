@@ -3,8 +3,9 @@
 import Image from "next/image";
 
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { useDispatch } from "react-redux";
 import { LuLoader2 } from "react-icons/lu";
+import { toast } from "sonner";
 
 import { PageWrapper } from "@/components/PageWrapper";
 import { Button } from "@/components/ui/button";
@@ -13,9 +14,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks";
 import { LoginData } from "@/interfaces";
+import { AppDispatch, setAuth } from "@/redux";
 
 const LoginPage = () => {
   const { isLoading, login } = useAuth();
+  const dispatch = useDispatch<AppDispatch>();
 
   const {
     register,
@@ -27,7 +30,10 @@ const LoginPage = () => {
     login(formData).then((data) => {
       if (data.success) {
         toast.success(data.success);
+
+        dispatch(setAuth({ isAuthorized: true, user: data.user }));
       }
+
       if (data.error) {
         toast.error(data.error);
       }
@@ -70,13 +76,13 @@ const LoginPage = () => {
                   type="password"
                   {...register("password", { required: "Password required" })}
                 />
-              </div>
 
-              {errors.password && (
-                <p className="text-destructive text-sm">
-                  {errors.password.message}
-                </p>
-              )}
+                {errors.password && (
+                  <p className="text-destructive text-sm">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>

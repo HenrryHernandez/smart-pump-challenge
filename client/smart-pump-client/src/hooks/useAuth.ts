@@ -17,9 +17,16 @@ export const useAuth = () => {
         loginData
       );
 
-      console.log(data.data?.user);
+      if (!data.data?.user) {
+        return {
+          error: "Unexpected error. Please contact the admin.",
+        };
+      }
 
-      return { success: "You have successfully logged in." };
+      return {
+        success: "You have successfully logged in.",
+        user: data.data.user,
+      };
     } catch (error) {
       if (error instanceof AxiosError) {
         return { error: error.response?.data.msg };
