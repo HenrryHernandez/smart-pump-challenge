@@ -1,9 +1,9 @@
-import { response } from "express";
+import { request, response } from "express";
 
 import { getConnection } from "../database/connection.js";
 import { generateToken } from "../helpers/generate-jwt.js";
 
-export const login = async (req, res = response) => {
+export const login = async (req = request, res = response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -41,4 +41,14 @@ export const login = async (req, res = response) => {
   const { guid, isActive, balance, password: pswd, ...userData } = user;
 
   res.status(200).json({ msg: "", data: { user: userData }, success: true });
+};
+
+export const logout = (req = request, res = response) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+  });
+
+  res.status(200).json({ msg: "", data: null, success: true });
 };

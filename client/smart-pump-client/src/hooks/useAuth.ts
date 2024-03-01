@@ -39,5 +39,15 @@ export const useAuth = () => {
     }
   };
 
-  return { isLoading, login };
+  const logout = async () => {
+    try {
+      await clientApi.get<StandardResponse>("/auth/logout");
+
+      return { success: "" };
+    } catch (error) {
+      return { error: "Something happened. Please try again." };
+    }
+  };
+
+  return { isLoading, login, logout };
 };

@@ -5,7 +5,8 @@ import { useEffect, ReactNode } from "react";
 import { useDispatch } from "react-redux";
 
 import { useUser } from "@/hooks/useUser";
-import { AppDispatch, setAuth } from "@/redux";
+import { AppDispatch, resetAuth, setAuth } from "@/redux";
+import { useAuth } from "@/hooks";
 
 interface Props {
   children: ReactNode;
@@ -13,12 +14,14 @@ interface Props {
 
 export const Initializer = ({ children }: Props) => {
   const { getUserInformation } = useUser();
+  const { logout } = useAuth();
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     getUserInformation().then((data) => {
       if (!data) {
-        // TODO: logout
+        logout();
+        dispatch(resetAuth());
 
         return;
       }
