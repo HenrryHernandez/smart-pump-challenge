@@ -38,7 +38,7 @@ export const login = async (req = request, res = response) => {
   });
 
   // remove data we don't want to send, the data we want is in "userData"
-  const { guid, isActive, balance, password: pswd, ...userData } = user;
+  const { guid, isActive, password: pswd, ...userData } = user;
 
   res.status(200).json({ msg: "", data: { user: userData }, success: true });
 };

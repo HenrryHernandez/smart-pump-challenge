@@ -9,7 +9,7 @@ export const userInformation = async (req = request, res = response) => {
 
   const user = db.data.users.find((user) => user._id === id);
 
-  const { guid, isActive, balance, password: pswd, ...userData } = user;
+  const { guid, isActive, password: pswd, ...userData } = user;
 
   res.status(200).json({ msg: "", data: { user: userData }, success: true });
 };

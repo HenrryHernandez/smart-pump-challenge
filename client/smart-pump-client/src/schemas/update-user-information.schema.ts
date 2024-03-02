@@ -18,6 +18,7 @@ export const UpdateUserInformationSchema = z
     password: z.string().trim().optional(),
     confirmPassword: z.string().trim().optional(),
     picture: z.string().optional(),
+    balance: z.string().optional(),
   })
   .refine(
     (data) => {

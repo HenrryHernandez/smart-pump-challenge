@@ -14,6 +14,7 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUser } from "@/hooks/useUser";
@@ -92,8 +93,22 @@ const SettingsPage = () => {
 
         <CardContent>
           <div className={cn("flex center gap-x-8", { "mb-8": edit })}>
-            <Button className="w-24">Balance</Button>
-            <Button className="w-24" onClick={() => setEdit((prev) => !prev)}>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline">Balance</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <p>
+                  Your balance is:{" "}
+                  <span className="font-bold">{user?.balance}</span>
+                </p>
+              </DialogContent>
+            </Dialog>
+            <Button
+              variant="outline"
+              className="w-24"
+              onClick={() => setEdit((prev) => !prev)}
+            >
               Edit
             </Button>
           </div>
