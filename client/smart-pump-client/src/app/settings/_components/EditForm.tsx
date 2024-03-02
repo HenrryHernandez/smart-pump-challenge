@@ -76,7 +76,11 @@ export const EditForm = ({ edit }: Props) => {
   return (
     <>
       {edit ? (
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          aria-label="form"
+          className="space-y-6"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="space-y-4">
             <div className="grid gap-2 py-2">
               <Label htmlFor="email">Email</Label>
