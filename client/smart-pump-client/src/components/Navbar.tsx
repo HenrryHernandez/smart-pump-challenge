@@ -16,7 +16,6 @@ import { Separator } from "./ui/separator";
 import { LogoutButton } from "./LogoutButton";
 import { UserButton } from "./UserButton";
 import { LoggedInValidatorWrapper } from "./LoggedInValidatorWrapper";
-import { useAppSelector } from "@/redux";
 
 const NavItemsDesktop = () => {
   return (
@@ -78,11 +77,8 @@ const NavItemsMobile = () => {
 };
 
 export const Navbar = () => {
-  const { user } = useAppSelector((state) => state.authReducer);
-
   return (
     <nav className="w-full h-20 flex justify-between items-center sticky top-0 p-4 px-8 shadow-lg z-20 bg-blue-500">
-      <p>{user?.age}</p>
       <Link href="/" className="w-16 h-full">
         <Image
           src="/logo.png"
