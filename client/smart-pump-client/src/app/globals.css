@@ -6,6 +6,14 @@
   @apply justify-center items-center;
 }
 
+.landing-bg {
+  background-image: url(/landing-page/pump-bg.jpg);
+  background-attachment: fixed;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
