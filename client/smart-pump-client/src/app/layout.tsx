@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 
 import { Initializer } from "@/components/Initializer";
 import { Navbar } from "@/components/Navbar";
+import { AuthenticatedProvider } from "@/contexts/AuthenticatedContext";
 import { ReduxProvider } from "@/redux";
 
 import "./globals.css";
@@ -25,12 +26,14 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
         <ReduxProvider>
-          <Initializer>
-            <Navbar />
-            {children}
+          <AuthenticatedProvider>
+            <Initializer>
+              <Navbar />
+              {children}
 
-            <Toaster position="top-center" richColors />
-          </Initializer>
+              <Toaster position="top-center" richColors />
+            </Initializer>
+          </AuthenticatedProvider>
         </ReduxProvider>
       </body>
     </html>
