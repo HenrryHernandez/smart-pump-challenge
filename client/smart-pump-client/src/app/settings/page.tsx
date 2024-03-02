@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -84,7 +84,7 @@ const SettingsPage = () => {
           <p className="text-2xl font-semibold text-center">⚙️ Settings</p>
 
           <Avatar className="max-w-[100px] max-h-[100px] w-full h-[100px]">
-            {/* <AvatarImage src="http://placehold.it/32x32" /> */}
+            <AvatarImage src={user?.picture} className="object-cover" />
             <AvatarFallback className="bg-blue-100">
               <FaUser className="text-blue-500 w-2/5 h-2/5" />
             </AvatarFallback>

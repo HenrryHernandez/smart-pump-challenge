@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import { CiSettings } from "react-icons/ci";
 
+import { useAppSelector } from "@/redux";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   DropdownMenu,
@@ -16,11 +17,13 @@ import { Separator } from "./ui/separator";
 import { LogoutButton } from "./LogoutButton";
 
 export const UserButton = () => {
+  const { user } = useAppSelector((state) => state.authReducer);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          {/* <AvatarImage src="http://placehold.it/32x32" /> */}
+          <AvatarImage src={user?.picture} className="object-cover" />
           <AvatarFallback className="bg-blue-100">
             <FaUser className="text-blue-500 p-[1px]" />
           </AvatarFallback>

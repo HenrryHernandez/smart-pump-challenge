@@ -30,7 +30,7 @@ const NavItemsDesktop = () => {
         </LoggedInValidatorWrapper>
 
         <LoggedInValidatorWrapper>
-          <li>
+          <li className="flex center">
             <UserButton />
           </li>
         </LoggedInValidatorWrapper>
