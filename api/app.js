@@ -2,8 +2,10 @@ import { config } from "dotenv";
 
 config();
 
-import { Server } from "./src/server.js";
+import server from "./src/server.js";
 
-const server = new Server();
+const port = process.env.PORT;
 
-server.listen();
+server.listen(port, () => {
+  console.log("listening on port:", port);
+});

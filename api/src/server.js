@@ -5,56 +5,37 @@ import cookieParser from "cookie-parser";
 import { createConnection } from "./database/connection.js";
 import { AuthRoute } from "./routes/auth.js";
 import { UserRoute } from "./routes/user.js";
-import { TestRoute } from "./routes/test.js";
+import { TestRoute } from "./routes/routett.js";
 
-export class Server {
-  app;
-  port;
+const app = express();
 
-  constructor() {
-    this.app = express();
-    this.port = process.env.PORT;
+// DB connection
+createConnection();
 
-    this.createDBConnection();
-    this.middlewares();
-    this.routes();
-  }
+// middlewares
+app.use(
+  cors({
+    origin: (origin = "", cb) => {
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://localhost:3002",
+      ];
+      if (allowedOrigins.includes(origin) || !origin) {
+        cb(null, true);
+      } else {
+        cb(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+app.use(express.json());
+app.use(cookieParser());
 
-  createDBConnection() {
-    createConnection();
-  }
+// routes
+app.use("/api/auth", AuthRoute);
+app.use("/api/user", UserRoute);
+app.use("/api/test", TestRoute);
 
-  middlewares() {
-    this.app.use(
-      cors({
-        origin: (origin = "", cb) => {
-          const allowedOrigins = [
-            "http://localhost:3000",
-            "http://localhost:3001",
-            "http://localhost:3002",
-          ];
-          if (allowedOrigins.includes(origin) || !origin) {
-            cb(null, true);
-          } else {
-            cb(new Error("Not allowed by CORS"));
-          }
-        },
-        credentials: true,
-      })
-    );
-    this.app.use(express.json());
-    this.app.use(cookieParser());
-  }
-
-  routes() {
-    this.app.use("/api/auth", AuthRoute);
-    this.app.use("/api/user", UserRoute);
-    this.app.use("/api/test", TestRoute);
-  }
-
-  listen() {
-    this.app.listen(this.port, () => {
-      console.log("listening on port:", this.port);
-    });
-  }
-}
+export default app;
