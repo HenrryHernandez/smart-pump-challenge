@@ -1,29 +1,19 @@
-# Simple Developer Exercise 
+# First
 
-The savvy cats over at SMART Pump would like to be able to allow users to login to their account, check their balance and update their personal details. Write a simple web application (API and UI) using node.js and lowdb that lets users accomplish those tasks. 
+I would like to thank you for this challenge. I really enjoyed building it 😄
 
-Feel free to use any other libraries or tool chains as long as the core code is javascript and node.js. npm (https://www.npmjs.org) is your friend - no need to recreate the wheel. 
+# Notes
 
-You will find the base data file in `/data`
+- At least node version 18 is needed (in case it doesn't work, try with version 20)
+- This is a mono-repository, that is, two projects are inside one repository. This is so to follow your folders' structure and make it easy for you to find everything.
+- I changed some of the profile pictures for ones in the /public so the Avatar icon could look a bit better than the generic http://placehold.it/32x32. Also, I removed the picture from one user to test the fallback of the Avatar, that is, when the user doesn't have a profile picture, a default avatar is set. (Check the users.json, field "picture" to understand better).
 
-Wireframes: `assets/wireframes.png`
+# Projects
 
-## Time limits
+## Backend
 
-This exercise is meant showcase your creativity and talent in problem solving against a real world scenario. To that end it should not consume your every waking moment. We recommend at max spending 3 evenings of time on the exercise. 
+Inside the "api", folder you will find the backend project. Please follow the instructions of the README in that project folder.
 
-## Requirements
+## Frontend
 
-* Login to the app via email and password
-* Restrict access to valid a User
-* Once logged in show the details of the user on the page
-* Authorized users can check their account balance
-* Allow the user to change their details
-* lowdb (DB) -> https://github.com/typicode/lowdb
-* node.js -> http://nodejs.org/ 
-
-## Bonus Points
-
-* Fully responsive UI
-* Unit Tests of the API
-* Functional Tests of the UI
+Inside the "client/smart-pump-client" folder you will find the frontend project. Please follow the instructions of the README in that project folder.
