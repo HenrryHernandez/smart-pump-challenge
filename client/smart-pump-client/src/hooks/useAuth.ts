@@ -30,7 +30,11 @@ export const useAuth = () => {
       };
     } catch (error) {
       if (error instanceof AxiosError) {
-        return { error: error.response?.data.msg };
+        return {
+          error:
+            error.response?.data.msg ||
+            "Unexpected error. Please contact the admin.",
+        };
       }
 
       return { error: "Something went wrong. Please try again." };
