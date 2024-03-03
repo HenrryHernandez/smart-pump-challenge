@@ -89,6 +89,24 @@
       "password": "red^adl4",
       "phone": "+1 (800) 433-3997",
       "address": "622 Fanchon Place, Kohatk, Marshall Islands, 8665"
+    },
+    {
+      "_id": "asldj390rusdmnjpas",
+      "guid": "eab0asdc-75asdf-49s-9c49-besd68asdb96",
+      "isActive": true,
+      "balance": "$1,625.69",
+      "picture": "http://placehold.it/32x32",
+      "age": 20,
+      "eyeColor": "purple",
+      "name": {
+        "first": "Test",
+        "last": "User"
+      },
+      "company": "Testers Inc",
+      "email": "test.user@gmail.com",
+      "password": "asd123",
+      "phone": "+1 (123) 123-4567",
+      "address": "Asd Qwe Zxc"
     }
   ]
 }
