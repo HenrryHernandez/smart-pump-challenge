@@ -13,7 +13,7 @@ I would like to thank you for this challenge. I really enjoyed building it 😄
 
 ## Backend
 
-Inside the "api", folder you will find the backend project. Please follow the instructions of the README in that project folder.
+Inside the "api" folder you will find the backend project. Please follow the instructions of the README in that project folder.
 
 ## Frontend
 
