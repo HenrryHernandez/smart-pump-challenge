@@ -4,7 +4,7 @@
 
 # Instructions
 
-- First, you need to install the dependencies with the command: `npm install`
+- First, you need to install the dependencies with the command: `npm install`. **(Please, make sure you are inside the /client/smart-pump-client folder when running this command.)**
 
 ## Starting the project
 
