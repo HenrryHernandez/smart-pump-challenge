@@ -1,0 +1,1 @@
+process.env.JWT_ACCESS_SECRET_SEED = "cb57f569-e96f-419b-98f2-1a14365a6be4";
