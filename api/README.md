@@ -14,3 +14,13 @@
 ## Running tests
 
 1. Run the command `npm run test` for the unit tests. In the console, you should see the status of the tests.
+
+# About the testing
+
+For the client side, I decided to test for:
+
+- The Settings page, when the "Edit" button is pressed and the form is shown.
+- The Settings page, when the "Balance" button is pressed and the modal is displayed.
+- The Settings page, for the form to be filled with the information of the user when he/she is authenticated.
+
+I decided these tests would be the ones necessary in a real-life scenario related to UI. The APIs are tested in the backend project.

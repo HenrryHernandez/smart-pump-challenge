@@ -14,3 +14,18 @@
 ## Running tests
 
 1. Run the command `npm run test` for the unit tests. In the console, you should see the status of the tests.
+
+# About the testing
+
+For the server side, I decided to test for every endpoint and different possible scenarios for each.
+We have two routes with two endpoints each:
+
+### auth route
+
+- POST - /api/auth/login
+- GET - /api/auth/logout
+
+### user route
+
+- GET - /api/user
+- PUT - /api/user
