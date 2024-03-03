@@ -15,7 +15,7 @@
 
 1. Run the command `npm run test` for the unit tests. In the console, you should see the status of the tests.
 
-# About the testing
+# About the Unit tests
 
 For the client side, I decided to test for:
 
