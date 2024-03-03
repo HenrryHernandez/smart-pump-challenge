@@ -12,7 +12,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useUser } from "@/hooks/useUser";
+import { useUser } from "@/hooks";
 import { modifyUserInformation, useAppSelector } from "@/redux";
 import { UpdateUserInformationSchema } from "@/schemas";
 

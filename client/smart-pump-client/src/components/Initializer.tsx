@@ -4,7 +4,7 @@ import { useEffect, ReactNode } from "react";
 
 import { useDispatch } from "react-redux";
 
-import { useUser } from "@/hooks/useUser";
+import { useUser } from "@/hooks";
 import { AppDispatch, resetAuth, setAuth } from "@/redux";
 import { useAuth } from "@/hooks";
 
