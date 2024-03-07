@@ -4,7 +4,7 @@ import SettingsPage from "@/app/settings/page";
 import { setAuth, store } from "@/redux";
 import { render, fireEvent } from "@testing-library/react";
 
-describe("Settings form and balace modal", () => {
+describe("Settings form and balance modal", () => {
   let component: ReturnType<typeof render>;
 
   beforeEach(() => {

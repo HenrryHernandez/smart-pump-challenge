@@ -8,7 +8,7 @@ describe("Validate token", () => {
     expect(response.statusCode).toBe(404);
   });
 
-  test("error (token not found)", async () => {
+  test("error (invalid token)", async () => {
     const token = "token=aninvalidone";
 
     const response = await request(server)
